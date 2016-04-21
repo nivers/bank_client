@@ -1,5 +1,5 @@
 //npm
-import chai, { expect } from 'chai';
+import chai from 'chai';
 import React from 'react';
 import TestUtils from 'react-addons-test-utils';
 import ReactDOM from 'react-dom';
