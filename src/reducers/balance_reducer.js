@@ -7,6 +7,11 @@ export default function(state = 0, action) {
   }
 
   if(action.type === WITHDRAW_FUNDS) {
+    const newBalance = state - action.payload;
+
+    if(newBalance < 0) {
+      throw new Error('Cannot withraw amoount that is greater than balance');
+    }
     return (state - action.payload);
   }
 

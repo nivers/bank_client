@@ -24,4 +24,9 @@ describe('Balance reducer', () => {
     const withdrawAction = withdrawFunds(50);
     expect(balanceReducer(100, withdrawAction)).to.equal(50);
   });
+
+  it('Throws an error if withdrawal would result in balance of less than 0', () => {
+    const withdrawAction = withdrawFunds(50.01);
+    expect(() => balanceReducer(50, withdrawAction)).to.throw(/Cannot withraw amoount that is greater than balance/);
+  });
 });
