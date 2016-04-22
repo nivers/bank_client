@@ -25,7 +25,7 @@ describe('Transaction history reducer', () => {
       expect(history.length).to.equal(1);
     });
 
-    it('New transaction be instance of Transaction class with correct date', () => {
+    it('New transaction be instance of Transaction class with correct data', () => {
       const transaction = history[0];
       expect(transaction instanceof Transaction).to.be.true;
       expect(transaction.timeStamp).to.eql(now);
@@ -43,7 +43,7 @@ describe('Transaction history reducer', () => {
       expect(history.length).to.equal(1);
     });
 
-    it('New transaction be instance of Transaction class with correct date', () => {
+    it('New transaction be instance of Transaction class with correct data', () => {
       const transaction = history[0];
       expect(transaction instanceof Transaction).to.be.true;
       expect(transaction.timeStamp).to.eql(now);
