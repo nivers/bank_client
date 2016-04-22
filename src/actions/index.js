@@ -13,7 +13,7 @@ function isTooPrecise(num) {
 
 //deposits and withdrawals are very similar, this function takes the differences as parameters
 const transaction = validRange => actionType => description => {
-  return function(amount) {
+  return function(amount, timeStamp) {
     if(typeof amount !== 'number') {
       throw new Error(`${description} amount data type must be "number"`);
     }
@@ -29,7 +29,7 @@ const transaction = validRange => actionType => description => {
     return {
       type: actionType,
       payload: amount,
-      timeStamp: new Date()
+      timeStamp: timeStamp || new Date()
     };
   }
 }

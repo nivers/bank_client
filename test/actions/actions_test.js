@@ -11,12 +11,17 @@ describe('actions', () => {
     it('is of correct type, payload and time stamp', () => {
       const amount = 341.43;
       const now = new Date();
-      const depositAction = depositFunds(amount);
+      const depositAction = depositFunds(amount, now);
       expect(depositAction.type).to.equal(DEPOSIT_FUNDS);
       expect(depositAction.payload).to.equal(amount);
-
-      //not deterministic!, need a better way to test this
       expect(depositAction.timeStamp).to.eql(now);
+    });
+
+    it('generates timestamp if not passed to constructor', () => {
+      const depositAction = depositFunds(100);
+      const { timeStamp } = depositAction;
+      expect(timeStamp).to.exist;
+      expect(timeStamp instanceof Date).to.be.true;
     });
 
     it('throws if payload is not a number', () => {
@@ -49,11 +54,18 @@ describe('actions', () => {
     it('is of correct type, payload and time stamp', () => {
       const amount = 54.23;
       const now = new Date();
-      const withdrawal = withdrawFunds(amount);
+      const withdrawal = withdrawFunds(amount, now);
 
       expect(withdrawal.type).to.equal(WITHDRAW_FUNDS);
       expect(withdrawal.payload).to.equal(amount);
       expect(withdrawal.timeStamp).to.eql(now);
+    });
+
+    it('generates timestamp if not passed to constructor', () => {
+      const withdrawAction = withdrawFunds(100);
+      const { timeStamp } = withdrawAction;
+      expect(timeStamp).to.exist;
+      expect(timeStamp instanceof Date).to.be.true;
     });
 
     it('throws if payload is not a number', () => {
