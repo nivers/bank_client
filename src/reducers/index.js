@@ -1,7 +1,11 @@
+//node modules
 import { combineReducers } from 'redux';
 
+//local
+import balanceReducer from './balance_reducer';
+
 const rootReducer = combineReducers({
-  state: (state = {}) => state
+  balance: balanceReducer
 });
 
 export default rootReducer;
