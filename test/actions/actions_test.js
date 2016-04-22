@@ -8,9 +8,11 @@ import { depositFunds, withdrawFunds, VALID_DEPOSIT_RANGE, VALID_WITHDRAWAL_RANG
 describe('actions', () => {
 
   describe('DEPOSIT_FUNDS', () => {
-    it('is of correct type', () => {
-      const depositAction = depositFunds(321.43);
+    it('is of correct type and payload', () => {
+      const amount = 341.43;
+      const depositAction = depositFunds(amount);
       expect(depositAction.type).to.equal(DEPOSIT_FUNDS);
+      expect(depositAction.payload).to.equal(amount);
     });
 
     it('throws if payload is not a number', () => {
@@ -40,9 +42,11 @@ describe('actions', () => {
   });
 
   describe('WITHDRAW_FUNDS', () => {
-    it('is of correct type', () => {
-      const withdrawal = withdrawFunds(54.23);
+    it('is of correct type and payload', () => {
+      const amount = 54.23;
+      const withdrawal = withdrawFunds(amount);
       expect(withdrawal.type).to.equal(WITHDRAW_FUNDS);
+      expect(withdrawal.payload).to.equal(amount);
     });
 
     it('throws if payload is not a number', () => {
