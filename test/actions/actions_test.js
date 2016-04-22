@@ -8,11 +8,15 @@ import { depositFunds, withdrawFunds, VALID_DEPOSIT_RANGE, VALID_WITHDRAWAL_RANG
 describe('actions', () => {
 
   describe('DEPOSIT_FUNDS', () => {
-    it('is of correct type and payload', () => {
+    it('is of correct type, payload and time stamp', () => {
       const amount = 341.43;
+      const now = new Date();
       const depositAction = depositFunds(amount);
       expect(depositAction.type).to.equal(DEPOSIT_FUNDS);
       expect(depositAction.payload).to.equal(amount);
+
+      //not deterministic!, need a better way to test this
+      expect(depositAction.timeStamp).to.eql(now);
     });
 
     it('throws if payload is not a number', () => {
@@ -42,11 +46,14 @@ describe('actions', () => {
   });
 
   describe('WITHDRAW_FUNDS', () => {
-    it('is of correct type and payload', () => {
+    it('is of correct type, payload and time stamp', () => {
       const amount = 54.23;
+      const now = new Date();
       const withdrawal = withdrawFunds(amount);
+
       expect(withdrawal.type).to.equal(WITHDRAW_FUNDS);
       expect(withdrawal.payload).to.equal(amount);
+      expect(withdrawal.timeStamp).to.eql(now);
     });
 
     it('throws if payload is not a number', () => {

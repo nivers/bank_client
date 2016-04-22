@@ -28,7 +28,8 @@ const transaction = validRange => actionType => description => {
 
     return {
       type: actionType,
-      payload: amount
+      payload: amount,
+      timeStamp: new Date()
     };
   }
 }
