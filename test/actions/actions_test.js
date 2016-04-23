@@ -43,8 +43,10 @@ describe('actions', () => {
       expect(() => depositFunds(tooLarge)).to.throw(/deposit amount is out of valid range/);
     });
 
-    it('accepts as payload numbers that are of valid precision', () => {
-      const validValues = [123, 123.1, 123.1];
+    it('accepts as payload numbers that are of valid precision and within acceptable range', () => {
+      const minValid = VALID_DEPOSIT_RANGE[0];
+      const maxValid = VALID_DEPOSIT_RANGE[1];
+      const validValues = [minValid, minValid + .01, maxValid - .01, maxValid];
       const makeValidDeposits = () => validValues.forEach(val => depositFunds(val));
       expect(makeValidDeposits).to.not.throw();
     });
@@ -87,8 +89,10 @@ describe('actions', () => {
       expect(() => withdrawFunds(tooLarge)).to.throw(/withdraw amount is out of valid range/);
     });
 
-    it('accepts as payload numbers that are of valid precision', () => {
-      const validValues = [123, 123.1, 123.1];
+    it('accepts as payload numbers that are of valid precision and within acceptable range', () => {
+      const minValid = VALID_WITHDRAWAL_RANGE[0];
+      const maxValid = VALID_WITHDRAWAL_RANGE[1];
+      const validValues = [minValid, minValid + .01, maxValid - .01, maxValid];
       const makeValidDeposits = () => validValues.forEach(val => withdrawFunds(val));
       expect(makeValidDeposits).to.not.throw();
     });
