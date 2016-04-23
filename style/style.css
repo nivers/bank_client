@@ -1,0 +1,14 @@
+/* Landing page */
+.landing-page {
+  margin-top: 25vh;
+  text-align: center;
+}
+
+.landing-page .row {
+  margin-bottom: 30px;
+}
+
+.landing-page h2 {
+  font-style: italic;
+  margin: 0;
+}
