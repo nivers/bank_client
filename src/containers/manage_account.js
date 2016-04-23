@@ -5,12 +5,35 @@ import { connect } from 'react-redux';
 
 //local
 import * as actions from '../actions/index';
+import Menu from '../components/menu';
+
+//menu options
+const DEPOSIT = 'Deposit Funds';
+const WITHDRAW = 'Withdraw Funds';
+
+const MENU_OPTIONS = [ DEPOSIT, WITHDRAW ];
 
 class ManageAccount extends Component {
+  constructor() {
+    super();
+
+    this.state = {
+      menuItemSelected: undefined,
+    };
+  }
+
   render() {
     return (
-      <div>
-        This was rendered in the manage account container
+      <div className="manage_account">
+        <div>
+          Balance: ${this.props.balance.toFixed(2)}
+        </div>
+
+        <Menu
+          options={MENU_OPTIONS}
+          currentSelection={this.state.menuItemSelected}
+          onSelect={(selection) => this.setState({ menuItemSelected: selection })}
+          />
       </div>
     );
   }
