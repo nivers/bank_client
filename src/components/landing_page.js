@@ -9,7 +9,7 @@ export default function() {
   return (
     <div className="landing-page">
 
-      <div className="ui row">
+      <div className="row">
         <h1>
           Welcome to Iron Bank Of Braavos - Online Banking
         </h1>
@@ -18,7 +18,7 @@ export default function() {
         </h2>
       </div>
 
-      <div className="ui row">
+      <div className="row">
         <Link to={MANAGE_ACCOUNT_ROUTE}>
           Manage Account
         </Link>
