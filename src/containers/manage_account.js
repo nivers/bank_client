@@ -6,6 +6,7 @@ import { connect } from 'react-redux';
 //local
 import * as actions from '../actions/index';
 import Menu from '../components/menu';
+import TransactionHistory from '../components/transaction_history';
 
 //menu options
 const DEPOSIT = 'Deposit Funds';
@@ -22,6 +23,20 @@ class ManageAccount extends Component {
     };
   }
 
+  content() {
+    if(this.state.menuItemSelected === DEPOSIT) {
+      return (<div> TODO: deposit form  </div>);
+    }
+    else if(this.state.menuItemSelected === WITHDRAW) {
+      return (<div> TODO: withdraw form </div>);
+    }
+    else {
+      return (
+        <TransactionHistory transactions={this.props.transactions} />
+      );
+    }
+  }
+
   render() {
     return (
       <div className="manage_account">
@@ -34,13 +49,18 @@ class ManageAccount extends Component {
           currentSelection={this.state.menuItemSelected}
           onSelect={(selection) => this.setState({ menuItemSelected: selection })}
           />
+
+        {this.content()}
       </div>
     );
   }
 }
 
 function mapStateToProps(state) {
-  return { balance: state.balance };
+  return {
+    balance: state.balance,
+    transactions: state.transactions
+  };
 }
 
 function mapDispatchToProps(dispatch) {
