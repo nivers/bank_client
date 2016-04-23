@@ -1,7 +1,12 @@
 //node modules
 import React, { Component } from 'react';
+import { bindActionCreators } from 'redux';
+import { connect } from 'react-redux';
 
-export default class ManageAccount extends Component {
+//local
+import * as actions from '../actions/index';
+
+class ManageAccount extends Component {
   render() {
     return (
       <div>
@@ -10,3 +15,13 @@ export default class ManageAccount extends Component {
     );
   }
 }
+
+function mapStateToProps(state) {
+  return { balance: state.balance };
+}
+
+function mapDispatchToProps(dispatch) {
+  return bindActionCreators(actions, dispatch);
+}
+
+export default connect(mapStateToProps, mapDispatchToProps)(ManageAccount);
