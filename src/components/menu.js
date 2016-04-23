@@ -18,17 +18,19 @@ function menuItem(optionName, className, onSelect) {
 }
 
 export default function(props) {
-  const numOptions = numberInEnglish[props.options.length];
+  const { options, currentSelection, onSelect } = props;
+
+  const numOptions = numberInEnglish[options.length];
   if(!numOptions) {
     throw new Error(`Manage account menu expecting option in range ${Object.keys(numberInEnglish)}`);
   }
 
   return (
     <div className={`ui ${numOptions} item menu`}>
-      {props.options.map(option => {
-        const selected = (option === props.currentSelection);
+      {options.map(option => {
+        const selected = (option === currentSelection);
         const className = selected ? 'active item' : 'item';
-        return menuItem(option, className, props.onSelect);
+        return menuItem(option, className, onSelect);
       })}
     </div>
   );
