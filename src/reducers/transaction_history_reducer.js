@@ -3,6 +3,9 @@ import { DEPOSIT_FUNDS, WITHDRAW_FUNDS } from '../actions/types';
 export function Transaction(changeInBalance, timeStamp) {
   this.changeInBalance = changeInBalance;
 
+  //not pure, IRL this would come from back-end
+  this.id = Date.now();
+
   //"re-construct" the date in order to make a shallow copy
   this.timeStamp = new Date(timeStamp);
 }

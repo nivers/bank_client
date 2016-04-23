@@ -28,6 +28,7 @@ describe('Transaction history reducer', () => {
     it('New transaction be instance of Transaction class with correct data', () => {
       const transaction = history[0];
       expect(transaction instanceof Transaction).to.be.true;
+      expect(transaction.id).to.exist;
       expect(transaction.timeStamp).to.eql(now);
       expect(transaction.changeInBalance).to.equal(amount);
     });
