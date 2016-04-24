@@ -57,6 +57,10 @@ class ManageAccount extends Component {
 
   withdrawForm() {
     const { balance } = this.props;
+
+    if(balance === 0) {
+      return (<div> You have no funds to withdraw </div>);
+    }
     const maxWithdraw = VALID_WITHDRAWAL_RANGE[1];
 
     //if the account balance is less than the max allowed withdraw ammount, then the form should permit values no higher than the current balance
