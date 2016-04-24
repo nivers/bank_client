@@ -52,6 +52,10 @@ export default class TransactionForm extends Component {
 
     return (
       <form className="deposit-form form">
+        <h2>
+          {this.props.title}
+        </h2>
+
         <MoneyInput
           value={this.state.inputValue}
           onChange={this.updateValue.bind(this)}
@@ -70,5 +74,10 @@ export default class TransactionForm extends Component {
 TransactionForm.propTypes = {
   //cancel: PropTypes.func.isRequired,
   onSubmit: PropTypes.func.isRequired,
+  title: PropTypes.string.isRequired,
   validRange: PropTypes.arrayOf(PropTypes.number)
 };
+
+TransactionForm.defaultProps = {
+  validRange: [0, 10000]
+}

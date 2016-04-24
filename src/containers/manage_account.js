@@ -44,6 +44,7 @@ class ManageAccount extends Component {
       return (
         <TransactionForm
           onSubmit={this.submitDeposit.bind(this)}
+          title="Deposit Form"
           validRange={VALID_DEPOSIT_RANGE}
           />
       );
@@ -52,6 +53,7 @@ class ManageAccount extends Component {
       return (
         <TransactionForm
           onSubmit={this.submitWithdrawal.bind(this)}
+          title="Withdrawal Form"
           validRange={VALID_WITHDRAWAL_RANGE}
           />
       );
