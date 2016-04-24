@@ -5,6 +5,7 @@ import { connect } from 'react-redux';
 
 //local
 import * as actions from '../actions/index';
+import DepositForm from '../components/deposit_form';
 import Menu from '../components/menu';
 import TransactionHistory from '../components/transaction_history';
 
@@ -23,9 +24,16 @@ class ManageAccount extends Component {
     };
   }
 
+  submitDeposit(amount) {
+    this.props.depositFunds(amount);
+
+    //go back to transaction history upon submit
+    this.setState({ menuItemSelected: undefined} );
+  }
+
   content() {
     if(this.state.menuItemSelected === DEPOSIT) {
-      return (<div> TODO: deposit form  </div>);
+      return (<DepositForm onSubmit={this.submitDeposit.bind(this)} />);
     }
     else if(this.state.menuItemSelected === WITHDRAW) {
       return (<div> TODO: withdraw form </div>);
