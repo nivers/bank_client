@@ -2,7 +2,7 @@
 
 Toy banking app built with React/Redux
 
-###Getting Started###
+###Running the app locally###
 
 To run the application locally, clone the repo, navigate to its top directory, and run "npm start" to run the webpack dev server. The app is configured to use port 8080.
 
