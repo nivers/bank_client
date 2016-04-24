@@ -16,7 +16,7 @@ describe('<SubmitButton>', () => {
     const expectedClasses = 'ui primary button'.split(' ');
     it(`Should have classes ${expectedClasses.join(', ')}`, () => {
       expectedClasses.forEach(className => {
-        expect(wrapper.find(`.${className}`)).to.have.length(1);
+        expect(wrapper.hasClass(className)).to.be.true;
       });
     });
 
@@ -45,7 +45,7 @@ describe('<SubmitButton>', () => {
     const expectedClasses = 'ui disabled primary button'.split(' ');
     it(`Should have classes ${expectedClasses.join(', ')}`, () => {
       expectedClasses.forEach(className => {
-        expect(wrapper.find(`.${className}`)).to.have.length(1);
+        expect(wrapper.hasClass(className)).to.be.true;
       });
     });
 
