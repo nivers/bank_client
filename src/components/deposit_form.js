@@ -66,6 +66,9 @@ export default class TransactionForm extends Component {
           disabled={!inputValid}
           text="Submit"
           />
+        <button className="ui button" onClick={this.props.cancel}>
+          Cancel
+        </button>
       </form>
     );
   }

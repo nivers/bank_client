@@ -25,18 +25,20 @@ class ManageAccount extends Component {
     };
   }
 
+  returnToTransactionHistory() {
+    this.setState({ menuItemSelected: undefined });
+  }
+
   submitDeposit(amount) {
     this.props.depositFunds(amount);
 
-    //go back to transaction history upon submit
-    this.setState({ menuItemSelected: undefined} );
+    this.returnToTransactionHistory();
   }
 
   submitWithdrawal(amount) {
     this.props.withdrawFunds(amount);
 
-    //go back to transaction history upon submit
-    this.setState({ menuItemSelected: undefined} );
+    this.returnToTransactionHistory();
   }
 
   content() {
@@ -44,6 +46,7 @@ class ManageAccount extends Component {
       return (
         <TransactionForm
           onSubmit={this.submitDeposit.bind(this)}
+          cancel={this.returnToTransactionHistory.bind(this)}
           title="Deposit Form"
           validRange={VALID_DEPOSIT_RANGE}
           />
@@ -53,6 +56,7 @@ class ManageAccount extends Component {
       return (
         <TransactionForm
           onSubmit={this.submitWithdrawal.bind(this)}
+          cancel={this.returnToTransactionHistory.bind(this)}
           title="Withdrawal Form"
           validRange={VALID_WITHDRAWAL_RANGE}
           />
