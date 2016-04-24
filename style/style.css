@@ -20,3 +20,8 @@
   font-style: italic;
   margin: 0;
 }
+
+/* transaction form */
+.transaction-form .buttons {
+  margin-top: 10px;
+}
