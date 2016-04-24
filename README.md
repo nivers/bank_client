@@ -12,3 +12,9 @@ To run the application locally, clone the repo, navigate to its top directory, a
 	> npm install
 	> npm start
 ```
+
+To run tests:
+
+```
+	> npm run test
+```
