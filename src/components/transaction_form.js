@@ -89,5 +89,4 @@ TransactionForm.propTypes = {
 TransactionForm.defaultProps = {
   min: 0,
   max: 1000000,
-  validRange: [0, 10000]
 }
