@@ -88,7 +88,7 @@ class ManageAccount extends Component {
 
   render() {
     return (
-      <div className="manage_account">
+      <div className="manage-account">
         <div>
           Balance: ${this.props.balance.toFixed(2)}
         </div>
