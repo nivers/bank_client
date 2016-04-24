@@ -1,3 +1,11 @@
+.red {
+  color: red;
+}
+
+.green {
+  color: green;
+}
+
 /* Landing page */
 .landing-page {
   margin-top: 25vh;
