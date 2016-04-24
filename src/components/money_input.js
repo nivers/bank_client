@@ -8,13 +8,16 @@ export default function({ value, onChange, error }) {
 
   return (
     <div className={inputClass}>
-      <div className="ui label">
-        $
-      </div>
-      <input type="text" value={value} onChange={onChange} />
-      <div className="ui basic label">
-        .00
-      </div>
+      <div className="ui label">$</div>
+
+      <input
+        type="text"
+        value={value}
+        onChange={onChange}
+        placeholder={`Enter an Amount`}
+        />
+
+      <div className="ui basic label">.00</div>
     </div>
   );
 }

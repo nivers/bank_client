@@ -58,6 +58,7 @@ export default class DepositForm extends Component {
         <SubmitButton
           onClick={this.submit.bind(this)}
           disabled={!inputValid}
+          text="Submit Deposit"
           />
       </form>
     );
