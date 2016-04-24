@@ -5,7 +5,8 @@ import { connect } from 'react-redux';
 
 //local
 import * as actions from '../actions/index';
-import DepositForm from '../components/deposit_form';
+import { VALID_DEPOSIT_RANGE, VALID_WITHDRAWAL_RANGE } from '../actions/index';
+import TransactionForm from '../components/deposit_form';
 import Menu from '../components/menu';
 import TransactionHistory from '../components/transaction_history';
 
@@ -31,12 +32,29 @@ class ManageAccount extends Component {
     this.setState({ menuItemSelected: undefined} );
   }
 
+  submitWithdrawal(amount) {
+    this.props.withdrawFunds(amount);
+
+    //go back to transaction history upon submit
+    this.setState({ menuItemSelected: undefined} );
+  }
+
   content() {
     if(this.state.menuItemSelected === DEPOSIT) {
-      return (<DepositForm onSubmit={this.submitDeposit.bind(this)} />);
+      return (
+        <TransactionForm
+          onSubmit={this.submitDeposit.bind(this)}
+          validRange={VALID_DEPOSIT_RANGE}
+          />
+      );
     }
     else if(this.state.menuItemSelected === WITHDRAW) {
-      return (<div> TODO: withdraw form </div>);
+      return (
+        <TransactionForm
+          onSubmit={this.submitWithdrawal.bind(this)}
+          validRange={VALID_WITHDRAWAL_RANGE}
+          />
+      );
     }
     else {
       return (

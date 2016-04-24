@@ -2,22 +2,10 @@
 import React, { Component, PropTypes } from 'react';
 
 //local
-import { VALID_DEPOSIT_RANGE } from '../actions';
 import MoneyInput from './money_input';
 import SubmitButton from './submit_button';
 
-function isValidInput(value) {
-  const integerRegex = /^\d+$/;
-
-  if(!integerRegex.test(value)) {
-    return false;
-  }
-
-  const numericValue = Number(value);
-  return (numericValue >= VALID_DEPOSIT_RANGE[0] && numericValue <= VALID_DEPOSIT_RANGE[1]);
-}
-
-export default class DepositForm extends Component {
+export default class TransactionForm extends Component {
   constructor() {
     super();
 
@@ -25,6 +13,20 @@ export default class DepositForm extends Component {
       inputValue: '',
       touched: false
     }
+  }
+
+  hasValidInput() {
+    const { inputValue } = this.state;
+
+    const integerRegex = /^\d+$/;
+    if(!integerRegex.test(inputValue)) {
+      return false;
+    }
+
+    const { validRange } = this.props;
+    const numericValue = Number(inputValue);
+
+    return (numericValue >= validRange[0] && numericValue <= validRange[1]);
   }
 
   updateValue(event) {
@@ -40,13 +42,13 @@ export default class DepositForm extends Component {
     event.preventDefault();
 
     const submitedValue = this.state.inputValue;
-    if(isValidInput(submitedValue)) {
+    if(this.hasValidInput(submitedValue)) {
       this.props.onSubmit(Number(submitedValue));
     }
   }
 
   render() {
-    const inputValid = isValidInput(this.state.inputValue);
+    const inputValid = this.hasValidInput(this.state.inputValue);
 
     return (
       <form className="deposit-form form">
@@ -58,13 +60,15 @@ export default class DepositForm extends Component {
         <SubmitButton
           onClick={this.submit.bind(this)}
           disabled={!inputValid}
-          text="Submit Deposit"
+          text="Submit"
           />
       </form>
     );
   }
 }
 
-DepositForm.propTypes = {
+TransactionForm.propTypes = {
+  //cancel: PropTypes.func.isRequired,
   onSubmit: PropTypes.func.isRequired,
+  validRange: PropTypes.arrayOf(PropTypes.number)
 };
