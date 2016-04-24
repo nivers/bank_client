@@ -41,26 +41,43 @@ class ManageAccount extends Component {
     this.returnToTransactionHistory();
   }
 
+  depositForm() {
+    return (
+      <TransactionForm
+        onSubmit={this.submitDeposit.bind(this)}
+        cancel={this.returnToTransactionHistory.bind(this)}
+        title="Deposit Form"
+        min={VALID_DEPOSIT_RANGE[0]}
+        max={VALID_DEPOSIT_RANGE[1]}
+        />
+    );
+  }
+
+  withdrawForm() {
+    const { balance } = this.props;
+    const maxWithdraw = VALID_WITHDRAWAL_RANGE[1];
+
+    //if the account balance is less than the max allowed withdraw ammount, then the form should permit values no higher than the current balance
+    const maxValidVal = (maxWithdraw > balance) ? balance : maxWithdraw;
+
+    return (
+      <TransactionForm
+        onSubmit={this.submitWithdrawal.bind(this)}
+        cancel={this.returnToTransactionHistory.bind(this)}
+        title="Withdrawal Form"
+        min={VALID_WITHDRAWAL_RANGE[0]}
+        max={maxValidVal}
+        validRange={maxValidVal}
+        />
+    );
+  }
+
   content() {
     if(this.state.menuItemSelected === DEPOSIT) {
-      return (
-        <TransactionForm
-          onSubmit={this.submitDeposit.bind(this)}
-          cancel={this.returnToTransactionHistory.bind(this)}
-          title="Deposit Form"
-          validRange={VALID_DEPOSIT_RANGE}
-          />
-      );
+      return this.depositForm();
     }
     else if(this.state.menuItemSelected === WITHDRAW) {
-      return (
-        <TransactionForm
-          onSubmit={this.submitWithdrawal.bind(this)}
-          cancel={this.returnToTransactionHistory.bind(this)}
-          title="Withdrawal Form"
-          validRange={VALID_WITHDRAWAL_RANGE}
-          />
-      );
+      return this.withdrawForm();
     }
     else {
       return (

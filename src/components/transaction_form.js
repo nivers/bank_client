@@ -23,10 +23,10 @@ export default class TransactionForm extends Component {
       return false;
     }
 
-    const { validRange } = this.props;
+    const { min, max } = this.props;
     const numericValue = Number(inputValue);
 
-    return (numericValue >= validRange[0] && numericValue <= validRange[1]);
+    return (numericValue >= min && numericValue <= max);
   }
 
   updateValue(event) {
@@ -49,7 +49,6 @@ export default class TransactionForm extends Component {
 
   cancel(event) {
     event.preventDefault();
-
     this.props.cancel();
   }
 
@@ -83,9 +82,12 @@ TransactionForm.propTypes = {
   cancel: PropTypes.func.isRequired,
   onSubmit: PropTypes.func.isRequired,
   title: PropTypes.string.isRequired,
-  validRange: PropTypes.arrayOf(PropTypes.number)
+  min: PropTypes.number,
+  max: PropTypes.number,
 };
 
 TransactionForm.defaultProps = {
+  min: 0,
+  max: 1000000,
   validRange: [0, 10000]
 }
