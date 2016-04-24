@@ -12,7 +12,7 @@ export default function({ disabled, onClick, text = 'Submit' }) {
   }
   else {
     return (
-      <button className="ui primary button" onClick={onClick}>
+      <button type="submit" className="ui primary button" onClick={onClick}>
         {text}
       </button>
     );

@@ -57,7 +57,7 @@ export default class TransactionForm extends Component {
     const inputValid = this.hasValidInput(this.state.inputValue);
 
     return (
-      <form className="deposit-form form">
+      <form className="deposit-form form" onSubmit={this.submit.bind(this)}>
         <h2>
           {this.props.title}
         </h2>
@@ -68,7 +68,6 @@ export default class TransactionForm extends Component {
           error={this.state.touched && !inputValid}
           />
         <SubmitButton
-          onClick={this.submit.bind(this)}
           disabled={!inputValid}
           text="Submit"
           />
