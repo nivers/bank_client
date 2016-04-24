@@ -47,6 +47,12 @@ export default class TransactionForm extends Component {
     }
   }
 
+  cancel(event) {
+    event.preventDefault();
+
+    this.props.cancel();
+  }
+
   render() {
     const inputValid = this.hasValidInput(this.state.inputValue);
 
@@ -66,7 +72,7 @@ export default class TransactionForm extends Component {
           disabled={!inputValid}
           text="Submit"
           />
-        <button className="ui button" onClick={this.props.cancel}>
+        <button className="ui button" onClick={this.cancel.bind(this)}>
           Cancel
         </button>
       </form>
@@ -75,7 +81,7 @@ export default class TransactionForm extends Component {
 }
 
 TransactionForm.propTypes = {
-  //cancel: PropTypes.func.isRequired,
+  cancel: PropTypes.func.isRequired,
   onSubmit: PropTypes.func.isRequired,
   title: PropTypes.string.isRequired,
   validRange: PropTypes.arrayOf(PropTypes.number)
