@@ -6,7 +6,7 @@ import { connect } from 'react-redux';
 //local
 import * as actions from '../actions/index';
 import { VALID_DEPOSIT_RANGE, VALID_WITHDRAWAL_RANGE } from '../actions/index';
-import TransactionForm from '../components/deposit_form';
+import TransactionForm from '../components/transaction_form';
 import Menu from '../components/menu';
 import TransactionHistory from '../components/transaction_history';
 
