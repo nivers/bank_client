@@ -5,9 +5,9 @@ export default function({ transactions = [] }) {
 
   return (
     <div className="transaction-history">
-      <h1>
+      <h2>
         Transaction History
-      </h1>
+      </h2>
       {transactions.length > 0 ? transactionsList(transactions) : (<span>No transactions yet</span>)}
     </div>
   );
